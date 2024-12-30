@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: Arial, sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: rgb(23, 23, 23);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.container {
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    width: 560px;
+    height: 500px;
+    background-color: rgb(33, 31, 31);
+    color: #fff;
+    display: grid;
+    position: relative;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(125px , 1fr));
+    grid-template-rows: repeat(4, 1fr);
+
+    gap: 10px;
+    overflow: hidden;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 8px;
+}
+
+.party {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+
+.container .card {
+    perspective: 500px;
+    transform-style: preserve-3d;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: capitalize;
+    animation: rr 1s infinite;
+
+    & .face,
+    & .back {
+        border-radius: 5px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .3s;
+        transform-origin: center;
+    }
+
+    & .face {
+        background-image: linear-gradient(to right, #104289, #104289);
+        transform: rotateY(0deg);
+    }
+
+    & .back {
+        transform: rotateY(180deg);
+    }
+
+    &.active {
+        transform: rotateY(180deg);
+    }
+}
+
+.btns button {
+    background-color: transparent;
+    color: #fff;
+    text-transform: capitalize;
+    border: 2px solid #e100ff00;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-size: 1em;
+    font-weight: 500;
+    background-image: linear-gradient(300deg, #7f00ff 0%, #e100ff 100%);
+    box-shadow: 0 0px 5px #e100ff00;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+        background-image: linear-gradient(90deg, #8000ff00 0%, #e100ff00 100%);
+        box-shadow: 0 0px 10px #e100ff;
+        border-color: #e100ff;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+        height: 90%;
+        width: 92%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+    /* .container .card {
+        margin: 0 auto;
+    } */
+}
